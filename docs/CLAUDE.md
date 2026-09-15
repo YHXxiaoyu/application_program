@@ -88,7 +88,7 @@
   排查结论:系统注册表(用户级/系统级)中该变量为**空值(无害)**,用户从桌面双击安装版不受影响(2026-09-14 已获用户同意清理注册表残留值,并已确认双击场景安全)。
 - **打包**:`npm run dist:win`(需先设 `ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/` 走国内镜像)。安装包输出到 `dist\黑马记账 Setup x.x.x.exe`,绿色版在 `dist\win-unpacked\`。Mac 版需在 Mac 电脑上执行 `electron-builder --mac`(代码无需改动)。
 - **数据目录**:`%APPDATA%\heimajizhang\heima.db`(开发版与安装版共用,代码中已用 setPath 固定)。
-- **已加入 Git 版本管理**(2026-09-15 经用户同意):仓库在 `d:\appserv\heimajizhang`,分支 main,署名"小鱼"<xiaoyu@heima.local>。Git 安装在 `D:\git_download\Git\cmd\git.exe`(自定义目录;Claude 会话内若找不到 git,需刷新 PATH 或使用全路径)。**约定:每完成一个功能/修复,自动 git add + commit(中文存档说明),并向用户汇报当前存档数。** 本文件的备份副本在 `heimajizhang\docs\CLAUDE.md`,编辑后需同步。
+- **已加入 Git 版本管理**(2026-09-15 经用户同意):仓库在 `d:\appserv\heimajizhang`,分支 main,署名"小鱼"<xiaoyu@heima.local>。Git 安装在 `D:\git_download\Git\cmd\git.exe`(自定义目录;Claude 会话内若找不到 git,需刷新 PATH 或使用全路径)。**约定:每完成一个功能/修复,自动 git add + commit(中文存档说明),并向用户汇报当前存档数;重要里程碑打 git 标签(如 `v1完成版`),向用户汇报存档历史时只报「标签+中文说明」,不报哈希编号(那是电脑内部使用的身份证号)。** 本文件的备份副本在 `heimajizhang\docs\CLAUDE.md`,编辑后需同步。
 - 权限已配置:`d:\appserv\.claude\settings.json` 允许在 heimajizhang 内写文件和运行 npm/git/node 命令,不会弹窗
 
 ## 六、进度记录
