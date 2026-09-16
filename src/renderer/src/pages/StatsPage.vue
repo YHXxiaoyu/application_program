@@ -75,7 +75,7 @@
     </template>
 
     <div v-else class="card empty-card">
-      <p class="empty-icon">🐴</p>
+      <p class="empty-icon">🐟</p>
       <p>还没有任何记账数据</p>
       <p class="empty-tip">去「记一笔」记录你的第一笔花销,统计图表会自动生成</p>
     </div>

@@ -63,7 +63,7 @@
 
     <!-- 空状态 -->
     <div v-else class="card empty-card">
-      <p class="empty-icon">🐴</p>
+      <p class="empty-icon">🐟</p>
       <p>本月还没有账单</p>
       <p class="empty-tip">去「记一笔」记录你的第一笔花销吧</p>
     </div>

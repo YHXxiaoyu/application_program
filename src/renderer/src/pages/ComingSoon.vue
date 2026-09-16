@@ -1,6 +1,6 @@
 <template>
   <div class="card placeholder">
-    <p class="placeholder-icon">🐴</p>
+    <p class="placeholder-icon">🐟</p>
     <p class="placeholder-title">「{{ title }}」即将上线</p>
     <p class="placeholder-text">该功能将在后续步骤中实现,敬请期待</p>
   </div>
