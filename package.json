@@ -1,9 +1,9 @@
 {
   "name": "heimajizhang",
-  "productName": "黑马记账",
+  "productName": "小鱼记账",
   "version": "0.1.0",
-  "description": "黑马记账 - 个人花销记账应用(Windows / macOS)",
-  "author": "黑马记账",
+  "description": "小鱼记账 - 个人花销记账应用(Windows / macOS)",
+  "author": "小鱼",
   "main": "./out/main/index.js",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "build": {
     "appId": "com.heima.jizhang",
-    "productName": "黑马记账",
+    "productName": "小鱼记账",
     "directories": {
       "output": "dist",
       "buildResources": "build"
@@ -29,7 +29,7 @@
       "allowToChangeInstallationDirectory": true,
       "installerLanguages": ["zh_CN"],
       "createDesktopShortcut": true,
-      "shortcutName": "黑马记账"
+      "shortcutName": "小鱼记账"
     }
   },
   "dependencies": {

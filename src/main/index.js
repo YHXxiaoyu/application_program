@@ -46,7 +46,7 @@ function registerIpc() {
     const stamp = `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`
     const { canceled, filePath } = await dialog.showSaveDialog(win, {
       title: '导出账单备份',
-      defaultPath: `黑马记账导出_${stamp}.csv`,
+      defaultPath: `小鱼记账导出_${stamp}.csv`,
       filters: [{ name: 'CSV 文件(可用 Excel 打开)', extensions: ['csv'] }]
     })
     if (canceled || !filePath) return { canceled: true }
@@ -61,7 +61,7 @@ function createWindow() {
     height: 720,
     minWidth: 900,
     minHeight: 600,
-    title: '黑马记账',
+    title: '小鱼记账',
     autoHideMenuBar: true,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),

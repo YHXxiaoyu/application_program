@@ -3,8 +3,8 @@
     <!-- 左侧导航栏 -->
     <aside class="sidebar">
       <div class="logo">
-        <span class="logo-mark">🐴</span>
-        <span class="logo-text">黑马记账</span>
+        <span class="logo-mark">🐟</span>
+        <span class="logo-text">小鱼记账</span>
       </div>
       <nav class="nav">
         <button

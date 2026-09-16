@@ -1,11 +1,11 @@
-# 黑马记账 — 项目文档与协作规则
+# 小鱼记账 — 项目文档与协作规则
 
 > 本文件是项目的"总章程":包含产品需求、与用户的协作规则、当前进度。
 > 每次开始工作前必须先读本文件。
 
 ## 一、项目简介
 
-- **产品名称**:黑马记账
+- **产品名称**:小鱼记账
 - **产品定位**:个人日常花销记账桌面应用,只记人民币支出
 - **目标平台**:Windows + macOS 桌面端
 - **数据原则**:所有数据保存在用户自己的电脑上,离线可用;不注册、不登录、不上传
@@ -86,7 +86,7 @@
 - **已知环境问题(重要)**:Claude Code/开发工具链的进程环境中带有 `ELECTRON_RUN_AS_NODE=1`,会导致 Electron 以命令行模式启动而崩溃。启动开发模式必须用:
   `Set-Location d:\appserv\heimajizhang; $env:ELECTRON_RUN_AS_NODE=$null; npm run dev`
   排查结论:系统注册表(用户级/系统级)中该变量为**空值(无害)**,用户从桌面双击安装版不受影响(2026-09-14 已获用户同意清理注册表残留值,并已确认双击场景安全)。
-- **打包**:`npm run dist:win`(需先设 `ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/` 走国内镜像)。安装包输出到 `dist\黑马记账 Setup x.x.x.exe`,绿色版在 `dist\win-unpacked\`。Mac 版需在 Mac 电脑上执行 `electron-builder --mac`(代码无需改动)。
+- **打包**:`npm run dist:win`(需先设 `ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/` 走国内镜像)。安装包输出到 `dist\小鱼记账 Setup x.x.x.exe`,绿色版在 `dist\win-unpacked\`。Mac 版需在 Mac 电脑上执行 `electron-builder --mac`(代码无需改动)。
 - **数据目录**:`%APPDATA%\heimajizhang\heima.db`(开发版与安装版共用,代码中已用 setPath 固定)。
 - **已加入 Git 版本管理**(2026-09-15 经用户同意):仓库在 `d:\appserv\heimajizhang`,分支 main,署名"小鱼"<xiaoyu@heima.local>。Git 安装在 `D:\git_download\Git\cmd\git.exe`(自定义目录;Claude 会话内若找不到 git,需刷新 PATH 或使用全路径)。**约定:每完成一个功能/修复,自动 git add + commit(中文存档说明),并向用户汇报当前存档数;重要里程碑打 git 标签(如 `v1完成版`),向用户汇报存档历史时只报「标签+中文说明」,不报哈希编号(那是电脑内部使用的身份证号)。** 本文件的备份副本在 `heimajizhang\docs\CLAUDE.md`,编辑后需同步。
 - 权限已配置:`d:\appserv\.claude\settings.json` 允许在 heimajizhang 内写文件和运行 npm/git/node 命令,不会弹窗
@@ -101,3 +101,4 @@
 - 2026-09-14:第 5 步完成 —— 应用图标(琥珀底+白色¥)、electron-builder 打包,Windows 安装包已生成。
 - 2026-09-14:**项目 v1 验收通过** —— 用户已成功安装并使用安装版应用,全部功能正常。
 - 2026-09-15:项目加入 Git 版本管理,第一次存档"v1 完成"(经用户同意,署名"小鱼")。
+- 2026-09-16:应用改名为「小鱼记账」(窗口标题、侧边栏、快捷方式、安装包、导出文件名全部更新;内部标识与数据目录不变,历史账单不受影响)。
