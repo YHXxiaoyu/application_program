@@ -105,3 +105,6 @@
 - 2026-09-16:修正改名遗漏 —— 账单页/统计页空状态、敬请期待页共 3 处旧图标(🐴)改为 🐟。
 - 2026-09-16:代码已上传到 GitHub 仓库 https://github.com/YHXxiaoyu/application_program(用户已有仓库;已启用浏览器登录助手,以后上传不用再输密码;本地存档与仓库 README 合并、里程碑标签同步上传;账单数据始终只在本机,从未上传)。
 - 2026-09-17:创建全局技能 `git_save`(一键存档并推送到 GitHub;存于 C:\Users\小鱼\.claude\skills\git_save;用户可随时说"存档"或输入 /git_save 触发)。
+- 2026-09-17:创建全局技能 `comments-check`(注释体检三标准:①注释缺失、密度约 10 行代码配 3 行注释;②注释与代码是否一致;③是否小白能看懂。存于 C:\Users\小鱼\.claude\skills\comments-check;说"检查注释"或 /comments-check 触发)。已对项目完成首次体检:注释密度约 3%~5% 不达标,但未发现注释与代码不符;是否补注释待用户决定。
+- 2026-09-17:创建全局技能 `security-audit`(安全检查四方面:①代码敏感信息泄露、含 Git 历史排查;②SQL/命令/界面/路径注入漏洞;③配置文件明文敏感信息与 .gitignore 数据保护;④Electron 安全开关、联网代码等其他隐患。存于 C:\Users\小鱼\.claude\skills\security-audit;说"安全检查"或 /security-audit 触发)。配套说明书:`docs\技能说明-security-audit.md`(已随本次存档上传 GitHub)。
+- 2026-09-17:创建全局 subagent `quality-engineer`(质检员,存于 C:\Users\小鱼\.claude\agents\quality-engineer.md):调用 security-audit + comments-check 两个技能,并补充正确性、可维护性、性能、数据隐私合规四项检查;只读不改、不联网、全程中文大白话报告。说"质检"或"检查代码质量"触发。
