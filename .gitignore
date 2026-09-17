@@ -2,3 +2,10 @@ node_modules/
 out/
 dist/
 *.log
+
+# 账单数据与导出文件(绝不上传:账单只留在本机)
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.csv

@@ -50,7 +50,12 @@ function registerIpc() {
       filters: [{ name: 'CSV 文件(可用 Excel 打开)', extensions: ['csv'] }]
     })
     if (canceled || !filePath) return { canceled: true }
-    fs.writeFileSync(filePath, '\uFEFF' + billsToCsv(exportAllBills()), 'utf8')
+    try {
+      fs.writeFileSync(filePath, '\uFEFF' + billsToCsv(exportAllBills()), 'utf8')
+    } catch (err) {
+      // \u6700\u5E38\u89C1\u7684\u5931\u8D25\u539F\u56E0:\u76EE\u6807\u6587\u4EF6\u6B63\u88AB Excel \u7B49\u7A0B\u5E8F\u5360\u7740,\u7CFB\u7EDF\u4E0D\u5141\u8BB8\u8986\u76D6
+      return { canceled: false, error: '\u5BFC\u51FA\u5931\u8D25\u3002\u8BF7\u5148\u5173\u95ED\u6B63\u5728\u6253\u5F00\u8FD9\u4E2A\u6587\u4EF6\u7684\u7A0B\u5E8F(\u6BD4\u5982 Excel),\u518D\u8BD5\u4E00\u6B21\u3002' }
+    }
     return { canceled: false, filePath }
   })
 }
@@ -80,7 +85,20 @@ function createWindow() {
 }
 
 app.whenReady().then(() => {
-  initDb()
+  try {
+    initDb()
+  } catch (err) {
+    // 数据库打不开时给出中文提示,避免出现"双击图标没反应"的困惑
+    dialog.showErrorBox(
+      '小鱼记账启动失败',
+      '账本数据库打不开,可能被其他程序占用或文件已损坏。\n\n' +
+        '可以先这样做:关掉所有小鱼记账窗口,重新双击图标打开试试。\n\n' +
+        '如果还是不行,请把下面这行信息发给 Claude:\n' +
+        err.message
+    )
+    app.quit()
+    return
+  }
   registerIpc()
   createWindow()
 

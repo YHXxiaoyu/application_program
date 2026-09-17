@@ -69,13 +69,23 @@ async function reloadCategories() {
 }
 
 async function exportData() {
-  const res = await window.heima.exportCsv()
-  if (res.canceled) {
-    toast.value = '已取消导出'
-  } else {
-    toast.value = '✅ 已导出:' + res.filePath
+  let duration = 4000
+  try {
+    const res = await window.heima.exportCsv()
+    if (res.canceled) {
+      toast.value = '已取消导出'
+    } else if (res.error) {
+      toast.value = '❌ ' + res.error
+      duration = 7000
+    } else {
+      toast.value = '✅ 已导出:' + res.filePath
+    }
+  } catch (err) {
+    // 兜底:导出过程中出任何意外也要给一句中文提示,不能"点了没反应"
+    toast.value = '❌ 导出失败,请稍后重试'
+    duration = 7000
   }
-  setTimeout(() => (toast.value = ''), 4000)
+  setTimeout(() => (toast.value = ''), duration)
 }
 
 onMounted(reloadCategories)
@@ -269,5 +279,8 @@ body,
   border-radius: 22px;
   font-size: 14px;
   z-index: 100;
+  max-width: 70vw;
+  text-align: center;
+  line-height: 1.5;
 }
 </style>

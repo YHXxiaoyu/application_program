@@ -12,6 +12,7 @@
     <div class="field">
       <label class="field-label">日期<span class="required">*</span></label>
       <input v-model="form.date" type="date" class="text-input" />
+      <p class="field-error" v-if="errors.date">{{ errors.date }}</p>
     </div>
 
     <div class="field">
@@ -94,7 +95,7 @@ const payMethods = ['微信', '支付宝', '现金', '银行卡', '信用卡', '
 
 const amount = ref('')
 const form = reactive({ date: todayStr(), note: '', categoryId: null, parentId: null, paymentMethod: '' })
-const errors = reactive({ amount: '', category: '' })
+const errors = reactive({ amount: '', date: '', category: '' })
 
 const parent = computed(() => props.categories.find((c) => c.id === form.parentId) || null)
 
@@ -121,10 +122,16 @@ function selectParent(id) {
 
 function submit() {
   errors.amount = ''
+  errors.date = ''
   errors.category = ''
   const cents = yuanToCents(amount.value)
   if (!amount.value || !Number.isFinite(cents) || cents <= 0) {
     errors.amount = '请输入正确的金额(大于 0)'
+    return
+  }
+  // 日期不能为空:账单页是按"年月"筛选的,日期为空会哪个也匹配不上,像"消失"了一样
+  if (!form.date) {
+    errors.date = '请选择日期(不能为空)'
     return
   }
   if (!form.categoryId) {
